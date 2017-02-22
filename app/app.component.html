@@ -1,14 +1,10 @@
 <header>
     <img src="img/angular.svg" alt="">
-    <h1>{{ title }}</h1>
+    <h1>{{ title }}</h1>                                                                            <!-- {{}} - шаблонные тэги, все что в них находится воспринимается как выражение. Так как шаблон привязан к компоненту AppComponent title будет ссылаться на свойство title в AppComponent -->
 </header>
 
 <main>
-    <!--<form class="todo-form" (submit)="create($event, titleInput.value); titleInput.value=''">-->
-    <form class="todo-form" (ngSubmit)="create(); todoForm.reset()" #todoForm="ngForm">
-        <input type="text" name="title" [(ngModel)]="newTodoTitle" placeholder="Что нужно сделать?" required>
-        <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
-    </form>
+    <todo-form></todo-form>
 
     <section class="todo-list" *ngIf="todos.length > 0">
         <!--<div class="todo-item" *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed }">-->

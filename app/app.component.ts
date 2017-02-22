@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core';                                 /* Импортируем декоратор Component */
 
 /*interface ITodo {
     title: string;
@@ -36,24 +36,25 @@ const todos: Todo[] = [
     }
 ];
 
-@Component({
+@Component({                                                                /* Декоратор Component предоставляет фреймворку информацию о компоненте */
     moduleId: module.id,
-    selector: 'app',
-    templateUrl: 'app.component.html',
+    selector: 'app',                                                        /* Свойство декоратра selector тут мы указываем названия тэга в нашем html */
+    templateUrl: 'app.component.html',                                      /* Адресс к HTML нашего компонента */
     styleUrls: ['app.component.css']
 })
-export class AppComponent {
-    title: string = 'Angular 2Do';
+
+export class AppComponent {                                                 /* Компоненты это классы, т.к. класс прийдется использовать в другом файле, добавляем export */
+    title: string = 'Angular 2Do';                                          /* Добавляем свойства класса */
     /*todos: ITodo[] = todos;*/
     todos: Todo[] = todos;
-    newTodoTitle: string = '';
+    /*newTodoTitle: string = '';*/
 
-    create() {
+    /*create() {
         let todo: Todo = new Todo(this.newTodoTitle);
 
         this.todos.push(todo);
         this.newTodoTitle = '';
-    }
+    }*/
 
     /*toggle(todo: { title: string, completed: boolean }) {*/
     /*toggle(todo: ITodo) {*/
