@@ -1,14 +1,15 @@
 <header>
     <img src="img/angular.svg" alt="">
-    <h1>{{ title }}</h1>                                                                            <!-- {{}} - шаблонные тэги, все что в них находится воспринимается как выражение. Так как шаблон привязан к компоненту AppComponent title будет ссылаться на свойство title в AppComponent -->
+    <h1>{{ title }}</h1>                                                                                                        <!-- {{}} - шаблонные тэги, все что в них находится воспринимается как выражение. Так как шаблон привязан к компоненту AppComponent title будет ссылаться на свойство title в AppComponent -->
 </header>
 
 <main>
     <todo-form></todo-form>
 
-    <section class="todo-list" *ngIf="todos.length > 0">
-        <!--<div class="todo-item" *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed }">-->
-        <div class="todo-item" *ngFor="let todo of todos" [class.completed]="todo.completed">
+    <section class="todo-list" *ngIf="todos.length > 0">                                                                        <!-- ngIf - директива, пользовательский аттрибут, который позволяет добавлять новый функционал, если директива = true, то DOM отображается, есле false, то нет. -->
+        <!--<div class="todo-item" *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed }">-->                   <!-- [] - означают что директива атрибутная, предназначены для изминения внешнего вида или поведения DOM елементов они не создают и не удаляют дом елементы. ngClass директива с помощью которой в зависимости от условий можно присвоить тот или иной класс. В качестве значения для директивы указывается объект { 'Называние css класса': true/false }  -->
+        <div class="todo-item" *ngFor="let todo of todos" [class.completed]="todo.completed">                                   <!-- * значит что директива структурная, т.е. изменяет структуру DOM. todos - свойство todos у компонента, todo - локальная переменная -->
+
             <button class="checkbox icon" (click)="toggle(todo)">
                 <!--<i *ngIf="!todo.completed" class="material-icons">check_box_outline_blank</i>
                 <i *ngIf="todo.completed" class="material-icons">check_box</i>-->
@@ -23,6 +24,7 @@
                     <i class="material-icons">delete</i>
                 </button>
             </div>
+
         </div>
     </section>
 </main>

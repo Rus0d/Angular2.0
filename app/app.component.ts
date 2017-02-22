@@ -20,8 +20,14 @@ class Todo {
                 public completed: boolean = false) {}
 }
 
+/* const todos = [ */                       /* Переменная содержимое которой не меняется */
+    /*'Изучить JavaScript'*/
+    /*'Изучить Angular 2'*/
+    /*'Написать приложение'*/
+/*];*/
+
 /*const todos: ITodo[] = [*/
-const todos: Todo[] = [
+const todos: Todo[] = [                     /*  */
     {
         title: 'Изучить JavaScript',
         completed: true
@@ -37,14 +43,15 @@ const todos: Todo[] = [
 ];
 
 @Component({                                                                /* Декоратор Component предоставляет фреймворку информацию о компоненте */
-    moduleId: module.id,
+    moduleId: module.id,                                                    /* Добавляем чтоб не указывать полные пути относительно index.html */
     selector: 'app',                                                        /* Свойство декоратра selector тут мы указываем названия тэга в нашем html */
     templateUrl: 'app.component.html',                                      /* Адресс к HTML нашего компонента */
-    styleUrls: ['app.component.css']
+    styleUrls: ['app.component.css']                                        /* Массив с адрессамт стилей нашего компонента */
 })
 
 export class AppComponent {                                                 /* Компоненты это классы, т.к. класс прийдется использовать в другом файле, добавляем export */
     title: string = 'Angular 2Do';                                          /* Добавляем свойства класса */
+    /*todos = todos;*/                                                      /* Присваемае свойству todos массив константу todos */
     /*todos: ITodo[] = todos;*/
     todos: Todo[] = todos;
     /*newTodoTitle: string = '';*/
