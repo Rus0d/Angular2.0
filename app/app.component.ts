@@ -57,28 +57,16 @@ export class AppComponent {                                                 /* �
     /*todos = todos;*/                                                      /* Присваемае свойству todos массив константу todos */
     /*newTodoTitle: string = '';*/
 
-    create(event: Event, input: HTMLInputElement) {                                    /* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  */
-        let todo: Todo = new Todo(input.value);
+    create(event: Event, title: string) {                                    /* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  */
+        let todo: Todo = new Todo(title);
 
         event.preventDefault();                                             /* Используем событие event.preventDefault(); чтоб остановить отправку данных. */
         this.todos.push(todo);
-        input.value = '';
     }
-
-    /*create( tile: string ) {
-        let todo: Todo = {
-            title: title,
-            completed: false
-        }
-
-    }*/
-
 
     toggle(todo: Todo) {
         todo.completed = !todo.completed;
     }
-
-    /*delete(todo: { title: string, completed: boolean }) {*/
 
     delete(todo: Todo) {
         let index = this.todos.indexOf(todo);
