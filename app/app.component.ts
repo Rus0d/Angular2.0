@@ -55,13 +55,13 @@ export class AppComponent {                                                 /* �
     todos: Todo[] = todos;
     /*todos: ITodo[] = todos;*/                                             /* Теперь свойство todos строго типизированно и туда можно поместить только элементы соответствующие интерфейсу ITodo */
     /*todos = todos;*/                                                      /* Присваемае свойству todos массив константу todos */
-    /*newTodoTitle: string = '';*/
+    newTodoTitle: string = '';
 
-    create(event: Event, title: string) {                                    /* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  */
-        let todo: Todo = new Todo(title);
+    create() {                                    /* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  */
+        let todo: Todo = new Todo(this.newTodoTitle);
 
-        event.preventDefault();                                             /* Используем событие event.preventDefault(); чтоб остановить отправку данных. */
         this.todos.push(todo);
+        this.newTodoTitle = '';
     }
 
     toggle(todo: Todo) {
