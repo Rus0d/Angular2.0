@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';                                 /* Импортируем декоратор Component */
 
-/*interface ITodo {
+/*interface ITodo {                                                          /!* Интерфейс - описание формы объекта *!/
     title: string;
     completed: boolean;
 }*/
 
-/*class Todo {
-    title: string;
+/*class Todo {                                                                    /!* Класс еще один способ определить тип объекта, класс отличается от интерфейса тем, что на основе класса мы можем создать объект, но для этого ему нужен конструктор. В то время как интерфейс просто описывает форму объекта. *!/
+    title: string;                                                                /!* Описание свойств класса *!/
     completed: boolean;
 
     constructor(title: string, completed: boolean = false) {
-        this.title = title;
+        this.title = title;                                                       /!* Инициализация свойств в теле конструктора *!/
         this.completed = completed;
     }
 }*/
-
-class Todo {
+class Todo {                                                                      /* Если конструктор инициализирует только свойства, его можно немного сократить, убрав инициализацию и добавив public перед параметрами, при этом свойства класса необходимо удалить.  */
     constructor(public title: string,
                 public completed: boolean = false) {}
 }
+
+
 
 /* const todos = [ */                       /* Переменная содержимое которой не меняется */
     /*'Изучить JavaScript'*/
@@ -27,7 +28,7 @@ class Todo {
 /*];*/
 
 /*const todos: ITodo[] = [*/
-const todos: Todo[] = [                     /*  */
+const todos: Todo[] = [                     /* Массивы в тайпскрипт типизированные т.е. в массив строк нельзя добавить число */
     {
         title: 'Изучить JavaScript',
         completed: true
@@ -50,27 +51,35 @@ const todos: Todo[] = [                     /*  */
 })
 
 export class AppComponent {                                                 /* Компоненты это классы, т.к. класс прийдется использовать в другом файле, добавляем export */
-    title: string = 'Angular 2Do';                                          /* Добавляем свойства класса */
-    /*todos = todos;*/                                                      /* Присваемае свойству todos массив константу todos */
-    /*todos: ITodo[] = todos;*/
+    title: string = 'Angular 2Do';                                          /* Указываем тип данных. Добавляем свойства класса */
     todos: Todo[] = todos;
+    /*todos: ITodo[] = todos;*/                                             /* Теперь свойство todos строго типизированно и туда можно поместить только элементы соответствующие интерфейсу ITodo */
+    /*todos = todos;*/                                                      /* Присваемае свойству todos массив константу todos */
     /*newTodoTitle: string = '';*/
 
-    /*create() {
-        let todo: Todo = new Todo(this.newTodoTitle);
+    create(event: Event, input: HTMLInputElement) {                                    /* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  */
+        let todo: Todo = new Todo(input.value);
 
+        event.preventDefault();                                             /* Используем событие event.preventDefault(); чтоб остановить отправку данных. */
         this.todos.push(todo);
-        this.newTodoTitle = '';
+        input.value = '';
+    }
+
+    /*create( tile: string ) {
+        let todo: Todo = {
+            title: title,
+            completed: false
+        }
+
     }*/
 
-    /*toggle(todo: { title: string, completed: boolean }) {*/
-    /*toggle(todo: ITodo) {*/
+
     toggle(todo: Todo) {
         todo.completed = !todo.completed;
     }
 
     /*delete(todo: { title: string, completed: boolean }) {*/
-    /*delete(todo: ITodo) {*/
+
     delete(todo: Todo) {
         let index = this.todos.indexOf(todo);
 
