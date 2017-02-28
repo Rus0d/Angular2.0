@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -8,12 +8,20 @@ import { Component } from '@angular/core';
 })
 
 export class TodoFormComponent {
-    newTodoTitle: string = '';
+    /*newTodoTitle: string = '';*/
+    /*newTodoTitle: string = '';*/                                                                                      /* Это свойство перещло в файл todo-form.component.ts */
 
-    create() {
-        /*let todo: Todo = new Todo(this.newTodoTitle);
-        this.todos.push(todo);
-        this.newTodoTitle = '';*/
+    /*create() {                                                                                                        /!* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  *!/
+    let todo: Todo = new Todo(this.newTodoTitle);                                                                       /!* Этот метод также перешел в компонент формы *!/
+
+    this.todos.push(todo);
+    this.newTodoTitle = '';
+    }*/
+    title: string = '';
+    @Output() add = new EventEmitter();
+
+    onSubmit() {                                                                                                          /* Первым аргументом указываем event, чтоб typescript имел представление о ДОМ объектах  */
+        this.add.emit(this.title);
     }
 
 }

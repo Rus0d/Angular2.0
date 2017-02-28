@@ -1,2 +1,20 @@
+<!--<form class="todo-form" (submit)="create($event, titleInput.value); titleInput.value = ''">                         &lt;!&ndash; События оборачиваются в круглый скобки. Чтоб при отправке формы страница не перезагружалась, нужно остановить процесс отправки данных, для этого первым аргументом create() передадим объект $event. Знак $ обязательно указать иначе angular не передаст объект события. &ndash;&gt;
+    <input type="text" placeholder="Что нужно сделать?" #titleInput>                                                    &lt;!&ndash; В шаблоне можно получить доступ к любому ДОМ елементу, пометив его как локальную переменную с помощью "#"  &ndash;&gt;
+    <button type="submit">Добавить</button>
+</form>-->
+
+<!--<form class="todo-form" (ngSubmit)="create(); todoForm.reset()" #todoForm="ngForm">                                 &lt;!&ndash; События оборачиваются в круглый скобки. Для получения доступа к форме, используем локальную переменную #todoForm и поместим в нее объект формы "ngForm" &ndash;&gt;
+    <input type="text" name="title" [(ngModel)]="newTodoTitle" placeholder="Что нужно сделать?" required>               &lt;!&ndash; Необходимо привязать поле к свойству класса newTodoTitle, для этого воспользуемся директивой ngModel, которая стала доступна после подключения библиотеки с формами и воспользуемся двусторонней привязкой данных, обернем в [()]- для установки двусторонней привязке данных, ()- т.к. нужно привязаться к событию, []- так как привязываемся к свойству.  &ndash;&gt;
+    <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>                                          &lt;!&ndash; Чтоб сделать кнопку не кликабельной, определим свойство [disabled] и в качестве значения укажем todoForm.form.invalid (свойство локального объекта, который ссылается на свойство формы) &ndash;&gt;
+</form>-->
 
 
+<!--<form class="todo-form" (ngSubmit)="create(); todoForm.reset()" #todoForm="ngForm">                                 &lt;!&ndash; События оборачиваются в круглый скобки. Для получения доступа к форме, используем локальную переменную #todoForm и поместим в нее объект формы "ngForm" &ndash;&gt;
+    <input type="text" name="title" [(ngModel)]="newTodoTitle" placeholder="Что нужно сделать?" required>               &lt;!&ndash; Необходимо привязать поле к свойству класса newTodoTitle, для этого воспользуемся директивой ngModel, которая стала доступна после подключения библиотеки с формами и воспользуемся двусторонней привязкой данных, обернем в [()]- для установки двусторонней привязке данных, ()- т.к. нужно привязаться к событию, []- так как привязываемся к свойству. &ndash;&gt;
+    <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>                                          &lt;!&ndash; Чтоб сделать кнопку не кликабельной, определим свойство [disabled] и в качестве значения укажем todoForm.form.invalid (свойство локального объекта, который ссылается на свойство формы) &ndash;&gt;
+</form>-->
+
+<form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset()" #todoForm="ngForm">
+    <input type="text" name="title" [(ngModel)]="title" placeholder="Что нужно сделать?" required>
+    <button type="submit" [disabled]="todoForm.form.invalid">Добавить</button>
+</form>

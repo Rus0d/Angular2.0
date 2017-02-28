@@ -1,0 +1,20 @@
+<!--<div class="todo-item" *ngFor="let todo of todos" [ngClass]="{ 'completed': todo.completed }">-->                   <!-- [] - означают что директива атрибутная, предназначены для изминения внешнего вида или поведения DOM елементов они не создают и не удаляют дом елементы. ngClass директива с помощью которой в зависимости от условий можно присвоить тот или иной класс. В качестве значения для директивы указывается объект { 'Называние css класса': true/false }  -->
+<!--<div class="todo-item" *ngFor="let todo of todos" [class.completed]="todo.completed">-->                            <!-- * значит что директива структурная, т.е. изменяет структуру DOM. todos - свойство todos у компонента, todo - локальная переменная -->
+<div class="todo-item" [class.completed]="todo.completed">
+
+    <button class="checkbox icon" (click)="toggle()">                                                                   <!-- В данном случае todo нам передавать не нужно -->
+        <!--<i *ngIf="!todo.completed" class="material-icons">check_box_outline_blank</i>
+        <i *ngIf="todo.completed" class="material-icons">check_box</i>-->
+        <!--<i class="material-icons" [innerText]="todo.completed ? 'check_box' : 'check_box_outline_blank'"></i>-->
+        <i class="material-icons">{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i>
+    </button>
+
+    <span class="title">{{ todo.title }}</span>
+
+    <div class="actions">
+        <button class="delete icon" (click)="onDelete()">                                                               <!-- Удалить задачу сдесь мы не можем, так как доступа к массиву у нас нет, необходимо сообщить родительскому компоненту о том, что такую то задачу необходимо удалить -->
+            <i class="material-icons">delete</i>
+        </button>
+    </div>
+
+</div>
